@@ -2,11 +2,16 @@ import { cva } from 'class-variance-authority'
 import { HTMLAttributes } from 'react'
 
 export type ButtonProps = {
-    variant: 'primary' | 'secondary' | 'tertiary'
+    variant?: 'primary' | 'secondary' | 'tertiary',
+    block?: boolean
 } & HTMLAttributes<HTMLButtonElement>
 
 const classes = cva('text-xs tracking-widest uppercase font-bold h-10 px-6 rounded-lg', {
+    
     variants: {
+        block: {
+            true: 'w-full'
+        },
         variant: {
             primary: 'border-2 border-transparent ',
             secondary: '',
@@ -14,7 +19,8 @@ const classes = cva('text-xs tracking-widest uppercase font-bold h-10 px-6 round
         }
     },
     defaultVariants: {
-        variant: 'primary'
+        variant: 'primary',
+        block: false
     }
 })
 
